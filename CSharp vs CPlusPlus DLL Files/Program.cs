@@ -3,6 +3,15 @@
 //ref link:https://www.youtube.com/watch?v=XrOCRem4g_A&list=PLRwVmtr-pp06rfSgNYu_oBg40DkwXiRHt&index=11
 //Creating/Adding Reference Assemblies: MeFarm.dll
 
+// C# --csc--> MSIL --jit--> NATIVE INSTRUCTION
+// C++(textFiles) --cl(CompileAndLink)--> Native Instruction
+// In C++ classes are gone, but functions is there for procedures
+
+// Dynamic Linking - the code is in the DLL file
+// Library File for C++ - a linker for metadata for the DLL
+
+//Creating DLL is native CPU code
+
 /*-----------------------------CMD: MeFarm.dll------------------------------------------------
  * 
 C:\Users\sunny\source\repos\DotNet Self Describing Assemblies>dir
@@ -297,6 +306,114 @@ C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DL
 24/09/2023  02:33 am    <DIR>          Properties
                5 File(s)         14,589 bytes
                5 Dir(s)  490,391,449,600 bytes free
+
+////////---------------CREATING DLL FOR C++-------------------------////////////
+--------------------the difference of C++ to C# is C++ is all native-------------
+-----------cmd type---------------
+cl -- compile and link
+/LD -- create a DLL(maybe LD means LINKDLL)
+/link; -- linking files
+
+----------------------------------
+C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DLL Files>cl /LD MyCPlusPlus.cpp
+Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32824 for x86
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+MyCPlusPlus.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.37.32822\include\ostream(780): warning C4530: C++ exception handler used, but unwind semantics are not enabled. Specify /EHsc
+MyCPlusPlus.cpp(7): note: see reference to function template instantiation 'std::basic_ostream<char,std::char_traits<char>> &std::operator <<<std::char_traits<char>>(std::basic_ostream<char,std::char_traits<char>> &,const char *)' being compiled
+Microsoft (R) Incremental Linker Version 14.37.32824.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:MyCPlusPlus.dll
+/dll
+/implib:MyCPlusPlus.lib
+MyCPlusPlus.obj
+   Creating library MyCPlusPlus.lib and object MyCPlusPlus.exp
+
+C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DLL Files>dir
+ Volume in drive C has no label.
+ Volume Serial Number is DAE4-938D
+
+ Directory of C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DLL Files
+
+24/09/2023  03:06 am    <DIR>          .
+24/09/2023  03:06 am    <DIR>          ..
+24/09/2023  02:33 am               189 App.config
+24/09/2023  02:33 am    <DIR>          bin
+24/09/2023  02:50 am             2,688 CSharp vs CPlusPlus DLL Files.csproj
+24/09/2023  02:53 am             4,096 MeFarm.dll
+24/09/2023  02:54 am               644 moo.res
+24/09/2023  02:54 am             6,318 moo.txt
+24/09/2023  02:45 am               198 MyCPlusPlus.cpp
+24/09/2023  03:05 am           159,744 MyCPlusPlus.dll  <---- has native instructions(dynamic linking) //(recommend knowledge in dynamic and static linking)
+24/09/2023  03:05 am             1,198 MyCPlusPlus.exp
+24/09/2023  02:45 am                85 MyCPlusPlus.h    <---- MetaData in textual form(only exist in Compiler lever not in Native level)
+24/09/2023  03:05 am             2,514 MyCPlusPlus.lib  <---- lib file,  a linker for metadata for the DLL
+24/09/2023  03:05 am            78,901 MyCPlusPlus.obj  <----C++ compiling (dont need)
+24/09/2023  02:33 am    <DIR>          obj
+24/09/2023  03:06 am            14,946 Program.cs
+24/09/2023  02:33 am    <DIR>          Properties
+              12 File(s)        271,521 bytes
+               5 Dir(s)  490,373,033,984 bytes free
+
+///------------------link MyCPlusPlus.lib to ConsumerCPlusPlus.cpp--------------
+C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DLL Files>cl ConsumerCPlusPlus.cpp /link MyCPlusPlus.lib
+Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32824 for x86
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+ConsumerCPlusPlus.cpp
+Microsoft (R) Incremental Linker Version 14.37.32824.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:ConsumerCPlusPlus.exe
+MyCPlusPlus.lib
+ConsumerCPlusPlus.obj
+   Creating library ConsumerCPlusPlus.lib and object ConsumerCPlusPlus.exp
+
+C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DLL Files>dir
+ Volume in drive C has no label.
+ Volume Serial Number is DAE4-938D
+
+ Directory of C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DLL Files
+
+24/09/2023  03:19 am    <DIR>          .
+24/09/2023  03:19 am    <DIR>          ..
+24/09/2023  02:33 am               189 App.config
+24/09/2023  02:33 am    <DIR>          bin
+24/09/2023  03:16 am               207 ConsumerCPlusPlus.cpp
+24/09/2023  03:17 am            85,504 ConsumerCPlusPlus.exe
+24/09/2023  03:17 am               944 ConsumerCPlusPlus.exp
+24/09/2023  03:17 am             2,230 ConsumerCPlusPlus.lib
+24/09/2023  03:17 am             1,144 ConsumerCPlusPlus.obj
+24/09/2023  02:50 am             2,688 CSharp vs CPlusPlus DLL Files.csproj
+24/09/2023  02:53 am             4,096 MeFarm.dll
+24/09/2023  02:54 am               644 moo.res
+24/09/2023  02:54 am             6,318 moo.txt
+24/09/2023  02:45 am               198 MyCPlusPlus.cpp
+24/09/2023  03:05 am           159,744 MyCPlusPlus.dll
+24/09/2023  03:05 am             1,198 MyCPlusPlus.exp
+24/09/2023  02:45 am                85 MyCPlusPlus.h
+24/09/2023  03:05 am             2,514 MyCPlusPlus.lib
+24/09/2023  03:05 am            78,901 MyCPlusPlus.obj
+24/09/2023  02:33 am    <DIR>          obj
+24/09/2023  03:19 am            17,244 Program.cs
+24/09/2023  02:33 am    <DIR>          Properties
+              17 File(s)        363,848 bytes
+               5 Dir(s)  490,360,352,768 bytes free
+
+C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DLL Files>ConsumerCPlusPlus.exe
+Moooooo
+Num munch num munch...
+
+-------------erase MyCPlusPlus.dll---------------------------
+C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DLL Files>erase MyCPlusPlus.dll
+
+C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DLL Files>ConsumerCPlusPlus.exe
+ERROR OUTPUT: ConsumerCPlusPlus.exe - System Error .....The program can't start because MyCPlusPlus.dll is missing from your computer. Try reinstalling the program to fix this problem.
+----------------DLL HELL-------------------
+
+
 
 
 

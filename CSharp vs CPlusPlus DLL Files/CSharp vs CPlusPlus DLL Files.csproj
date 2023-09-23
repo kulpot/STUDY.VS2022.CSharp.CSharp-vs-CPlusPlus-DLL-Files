@@ -53,6 +53,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ConsumerCPlusPlus.cpp" />
     <Content Include="MyCPlusPlus.cpp" />
     <Content Include="MyCPlusPlus.h" />
   </ItemGroup>
