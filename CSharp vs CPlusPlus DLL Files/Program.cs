@@ -3,7 +3,7 @@
 //ref link:https://www.youtube.com/watch?v=XrOCRem4g_A&list=PLRwVmtr-pp06rfSgNYu_oBg40DkwXiRHt&index=11
 //Creating/Adding Reference Assemblies: MeFarm.dll
 
-/*-----------------------------CMD------------------------------------------------
+/*-----------------------------CMD: MeFarm.dll------------------------------------------------
  * 
 C:\Users\sunny\source\repos\DotNet Self Describing Assemblies>dir
  Volume in drive C has no label.
@@ -259,8 +259,50 @@ C:\Users\sunny\source\repos\DotNet Self Describing Assemblies\DotNet Self Descri
 
 
 -----------------------------NOTEPAD: moo.txt-------------------------------------END
+-----------------------------CMD: MeFarm.dll------------------------------------------END
+
+---------------------------CMD: C# vs C++------------------------------------------
+C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files>dir
+ Volume in drive C has no label.
+ Volume Serial Number is DAE4-938D
+
+ Directory of C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files
+
+24/09/2023  02:35 am    <DIR>          .
+24/09/2023  02:35 am    <DIR>          ..
+24/09/2023  02:35 am             2,581 .gitattributes
+24/09/2023  02:35 am             6,585 .gitignore
+24/09/2023  02:45 am    <DIR>          CSharp vs CPlusPlus DLL Files
+24/09/2023  02:33 am             1,193 CSharp vs CPlusPlus DLL Files.sln
+               3 File(s)         10,359 bytes
+               3 Dir(s)  490,391,449,600 bytes free
+
+C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files>cd CSharp vs CPlusPlus DLL Files
+
+C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DLL Files>dir
+ Volume in drive C has no label.
+ Volume Serial Number is DAE4-938D
+
+ Directory of C:\Users\sunny\source\repos\CSharp vs CPlusPlus DLL Files\CSharp vs CPlusPlus DLL Files
+
+24/09/2023  02:45 am    <DIR>          .
+24/09/2023  02:45 am    <DIR>          ..
+24/09/2023  02:33 am               189 App.config
+24/09/2023  02:33 am    <DIR>          bin
+24/09/2023  02:35 am             2,573 CSharp vs CPlusPlus DLL Files.csproj
+24/09/2023  02:45 am               198 MyCPlusPlus.cpp
+24/09/2023  02:45 am                85 MyCPlusPlus.h
+24/09/2023  02:33 am    <DIR>          obj
+24/09/2023  02:34 am            11,544 Program.cs
+24/09/2023  02:33 am    <DIR>          Properties
+               5 File(s)         14,589 bytes
+               5 Dir(s)  490,391,449,600 bytes free
 
 
+
+
+
+---------------------------CMD: C# vs C++------------------------------------------END
 
  * 
  */
